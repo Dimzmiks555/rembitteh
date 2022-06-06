@@ -1,13 +1,14 @@
 import React from 'react'
 import LOGO from '../images/LOGO.svg'
 
-export const Header = () => {
+export const Footer = () => {
   return (
-    <header>
+    <footer>
         <div className="container">
             <nav>
                 <div className='logo'>
                     <img src={LOGO}></img>
+                    <h3>Ремонт бытовой техники</h3>
                 </div>
                 <ul>
                     <li>
@@ -28,13 +29,7 @@ export const Header = () => {
                     <h3>alexa.afa@yandex.ru</h3>
                 </div>
             </nav>
-            <div className='hero'>
-                <h1>Ремонт стиральных машин по Воронежской области</h1>
-                <h2>Консультация бесплатно. Ремонт в день обращения</h2>
-                <h2>Выезд мастера в г. Лиски, Острогожск, Нововоронеж, Воронеж, Бобров, и прилегающие города и села.</h2>
-                <button>Оставить заявку</button>
-            </div>
         </div>
-    </header>
+    </footer>
   )
 }
