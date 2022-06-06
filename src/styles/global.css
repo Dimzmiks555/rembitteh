@@ -17,6 +17,66 @@ ul, li {
     max-width: 1024px;
     margin: 0 auto;
 }
+@media screen and (max-width: 1100px) {
+    .container {
+        max-width: 80% !important;
+        margin: 0 auto;
+    }
+    
+    .hero h1 {
+        width: 70% !important;
+        font-size: 42px;
+    }
+    .logo {
+        margin-right: 40px;
+    }
+    
+    nav > ul > li {
+        width: 40%;
+        margin-bottom: 8px;
+    }
+    nav > ul {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    header {
+        height: 700px !important;
+    }
+}
+@media screen and (max-width: 800px) {
+    .container {
+        max-width: 90% !important;
+        margin: 0 auto;
+    }
+    
+    .hero h1 {
+        width: 70% !important;
+        font-size: 42px;
+    }
+    .logo {
+        margin-right: 0 !important;
+    }
+    nav {
+        /* flex-direction: column !important; */
+    }
+    nav > ul > li {
+        width: 50%;
+        margin-right: 0 !important;
+        margin-bottom: 8px;
+    }
+    nav > ul {
+        display: none !important;
+        margin-top: 10px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    header {
+        height: 800px !important;
+    }
+    .about_card {
+        width: 100% !important;
+    }
+}
 .section {
     padding: 20px 0;
 }
@@ -70,6 +130,16 @@ nav > ul > li a {
     width: 50%;
     line-height: 24px;
     font-size: 24px;
+}
+nav h3 {
+    margin-top: 0;
+    font-weight: 500;
+    width: 50%;
+    line-height: 24px;
+    font-size: 20px;
+}
+nav h2 {
+    margin-bottom: 0;
 }
 .hero button {
     margin-top: 20px;

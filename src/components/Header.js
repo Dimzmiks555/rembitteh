@@ -25,6 +25,7 @@ export const Header = () => {
                 </ul>
                 <div>
                     <h2>+7 920 464 57-92</h2>
+                    <h3>alexa.afa@yandex.ru</h3>
                 </div>
             </nav>
             <div className='hero'>
