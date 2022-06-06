@@ -29,7 +29,7 @@ export const About = () => {
 
 
   return (
-    <div className='section'>
+    <div className='section' id="about">
         <div className='container'>
             <h2>Почему стоит выбрать нас</h2>
             <div className='about_block'>

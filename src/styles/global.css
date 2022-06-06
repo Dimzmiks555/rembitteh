@@ -27,6 +27,10 @@ ul, li {
         width: 70% !important;
         font-size: 42px;
     }
+    .hero h2 {
+        width: 60% !important;
+        font-size: 42px;
+    }
     .logo {
         margin-right: 40px;
     }
@@ -41,6 +45,8 @@ ul, li {
     }
     header {
         height: 700px !important;
+        background: url('../images/HERO.jpg') no-repeat 65% 0% !important;
+        background-size: cover !important;
     }
     .review_card {
         width: 42% !important;
@@ -90,6 +96,7 @@ ul, li {
         background: url('../images/HERO.jpg') no-repeat 65% 0% !important;
         background-size: cover !important;
     }
+    header nav {}
     footer .logo h3 {
         display: none;
     }
@@ -104,6 +111,45 @@ ul, li {
         background: #def;
         padding: 20px;
         border-radius: 20px;
+    }
+    
+    #contact .contact_block {
+        /* color: #333 !important;
+        margin-bottom: 20px;
+        background: rgba(221, 238, 255, 0.8);
+        padding: 20px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; */
+        flex-direction: column;
+    }
+    #contact .contact_block  img {
+        max-height: 300px !important;
+        object-fit: scale-down;
+    }
+    #smm {
+        margin-top: 10px;
+        height: 100px !important;
+        width: 100% !important;
+        object-fit: scale-down !important;
+    }
+    #contact .contact_block > div {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    header {
+        height: 732px !important;
+    }
+    .hero h1 {
+        width: 100% !important;
+        font-size: 36px !important;
+    }
+    .hero h2 {
+        width: 100% !important;
+        font-size: 42px;
     }
 }
 .section {
@@ -121,13 +167,19 @@ header {
     background: url('../images/HERO.jpg') no-repeat center center;
     background-size: cover;
 }
+header nav a {
+    color: #333;
+}
+footer nav a {
+    color: #fff;
+}
 header nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-radius: 10px;
-    background: #fff;
-    box-shadow: 0px 0px 10px #aaa;
+    /* background: #fff; */
+    box-shadow: inset -100px -140px 400px #fff;
     padding: 0px 40px;
 }
 header nav > ul {
@@ -183,6 +235,9 @@ header nav h2 {
     border-radius: 8px;
     padding: 20px 40px;
     font-size: 18px;
+}
+.hero button a {
+    color: #fff;
 }
 
 
@@ -367,4 +422,59 @@ footer nav h3 {
 }
 footer nav h2 {
     margin-bottom: 0;
+}
+
+#contact {
+    background: url('../images/blobs.jpg');
+}
+#contact h2 {
+    color: #fff ;
+}
+#contact .contact_block a {
+    color: #333;
+}
+#contact .contact_block {
+    color: #333 !important;
+    margin-bottom: 20px;
+    background: rgba(221, 238, 255, 0.8);
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#contact .contact_block h1 {
+    color: #333 !important;
+    font-size: 42px;
+    margin-bottom: 30px !important;
+}
+#contact .contact_block h2 {
+    color: #333 !important;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 0;
+}
+#contact .contact_block h3 {
+    color: #333 !important;
+    font-weight: 400;
+    font-size: 26px;
+    margin: 0;
+}
+#contact .contact_block p {
+    color: #333 !important;
+    width: 90%;
+}
+#contact .contact_block > div{
+    width: 49%;
+}
+#contact .contact_block > div img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+#smm {
+    margin-top: 10px;
+    max-width: 240px;
+    height: auto;
+    object-fit: scale-down !important;
 }

@@ -38,7 +38,7 @@ export const Review = () => {
 
 
   return (
-    <div className='section'>
+    <div className='section' id="reviews">
         <div className='container'>
             <h2>Отзывы довольных клиентов</h2>
             <div className='review_block'>

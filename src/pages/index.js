@@ -1,5 +1,6 @@
 import * as React from "react"
 import { About } from "../components/About"
+import { Contact } from "../components/Contact"
 import { Footer } from "../components/Footer"
 import { Header } from "../components/Header"
 import { Review } from "../components/Review"
@@ -13,6 +14,7 @@ const IndexPage = () => {
         <Header></Header>
         <About></About>
         <Review></Review>
+        <Contact></Contact>
         <Footer></Footer>
       </main>
   )
