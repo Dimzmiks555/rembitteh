@@ -16,10 +16,14 @@
   },
   "dependencies": {
     "gatsby": "^4.15.2",
+    "gatsby-plugin-manifest": "^4.15.1",
     "gatsby-plugin-react-helmet": "^5.15.0",
     "gatsby-plugin-sitemap": "^5.15.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0"
+  },
+  "devDependencies": {
+    "gatsby-plugin-favicons": "^2.0.0"
   }
 }
