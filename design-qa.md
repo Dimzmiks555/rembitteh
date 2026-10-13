@@ -31,3 +31,13 @@ Initial implementation comparison: no blocking issues found; source-specific col
 P3: supporting carousel images reuse crops of the supplied photograph. Dedicated repair photographs could add variety if the owner provides them.
 
 final result: passed
+
+## Latest revision — unique generated photography and question cards
+User explicitly requested replacement of the hero photo, unique generated service photographs, larger type, and a FAQ unlike the previous projects. These requests supersede the prior image-preservation and circular-photo details above.
+- Seven separate images generated: blue machine in an interior; drain filter; unlit controls; heating element; bearing/pulley; leak/hose; wet towels in drum. Optimized WebP assets total 588 KB.
+- Main image now has an arch-shaped frame. Repeated photographs removed from steps and hero review teaser; original photo is retained only once in the story section. Master illustration occurs only in contacts.
+- FAQ rebuilt as a three-column question-card grid on desktop and one column on phones, with native accessible disclosure, explicit read/collapse labels and inline answers. Open/close behavior verified.
+- Body and service text increased to 17–18 px; question headings to 25–26 px. Native reduced-motion handling retained.
+- Browser checked at 320, 390, 560, 768, 1024 and 1440 px: no horizontal overflow or broken images; all six service photo sources are distinct. No browser console errors. Carousel controls still work.
+- Production build passed. Static HTML check confirms unique photograph URLs, valid local assets, five FAQ disclosures and a single H1.
+final result: passed
