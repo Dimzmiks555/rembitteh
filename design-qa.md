@@ -41,3 +41,4 @@ User explicitly requested replacement of the hero photo, unique generated servic
 - Browser checked at 320, 390, 560, 768, 1024 and 1440 px: no horizontal overflow or broken images; all six service photo sources are distinct. No browser console errors. Carousel controls still work.
 - Production build passed. Static HTML check confirms unique photograph URLs, valid local assets, five FAQ disclosures and a single H1.
 final result: passed
+- Final independent review found the summary focus outline was clipped by card overflow. Fixed with an inset outline (-5px offset); browser keyboard check confirmed focused SUMMARY with solid inset outline. Rebuild passed.
