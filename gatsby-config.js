@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `REMBITTEH`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://gorgeous-figolla-768936.netlify.app`
   },
   plugins: [
     "gatsby-plugin-react-helmet", 
@@ -12,8 +12,8 @@ module.exports = {
         name: 'Ремонт бытовой техники',
         short_name: 'Ремонт бытовой техники',
         start_url: '/',
-        background_color: '#fff',
-        theme_color: '#fff',
+        background_color: '#f5f7fa',
+        theme_color: '#f5f7fa',
         display: 'standalone',
         icon: 'src/images/LOGO.svg',
       },

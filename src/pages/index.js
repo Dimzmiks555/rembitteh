@@ -1,30 +1,44 @@
-import * as React from "react"
-import Helmet from "react-helmet"
-import { About } from "../components/About"
-import { Contact } from "../components/Contact"
-import { Footer } from "../components/Footer"
-import { Header } from "../components/Header"
-import { Review } from "../components/Review"
+import React, { useState, useRef } from 'react'
+import Helmet from 'react-helmet'
+import Logo from '../images/LOGO.svg'
+import Hero from '../images/HERO.jpg'
+import NewHero from '../images/generated/hero.webp'
+import Drain from '../images/generated/drain.webp'
+import Power from '../images/generated/power.webp'
+import Heat from '../images/generated/heat.webp'
+import Noise from '../images/generated/noise.webp'
+import Leak from '../images/generated/leak.webp'
+import Spin from '../images/generated/spin.webp'
+const issueImages=[Drain,Power,Heat,Noise,Leak,Spin]
+import Master from '../images/master.png'
+import { Review } from '../components/Review'
 import '../styles/global.css'
 
-
-// markup
-const IndexPage = () => {
-  return (
-      <main >
-        <Helmet>
-          <meta charSet="utf-8" />
-          <title>Ремонт бытовой техники по Воронежской области</title>
-          <meta name="keywords" content="Ремонт стиральных машин, Ремонт бытовой техники, Воронежская область, Лиски, Острогожск, Нововоронеж, Воронеж, Бобров, Ремонт бытовой техники по Воронежской области, мастер, мастер по ремонту бытовой техники, починить стиральную машину, стиральная машина" />
-          <meta name="description" content="Ремонт бытовой техники по Воронежской области. Консультация бесплатно. Ремонт в день обращения. Выезд мастера в г. Лиски, Острогожск, Нововоронеж, Воронеж, Бобров, и прилегающие города и села." />
-        </Helmet>
-        <Header></Header>
-        <About></About>
-        <Review></Review>
-        <Contact></Contact>
-        <Footer></Footer>
-      </main>
-  )
+const phone = '+7 920 464-57-92'
+const tel = 'tel:+79204645792'
+const Arrow = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+const Icon = ({type}) => <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{type==='water'?<><path d="M16 4S7 15 7 21a9 9 0 0018 0c0-6-9-17-9-17Z"/><path d="M12 22a4 4 0 004 4"/></>:type==='power'?<><path d="M16 3v13M9 7a12 12 0 1014 0"/></>:type==='sound'?<><path d="M5 12v8h5l7 6V6l-7 6H5ZM22 10a9 9 0 010 12M26 6a15 15 0 010 20"/></>:type==='heat'?<><path d="M13 18V7a4 4 0 018 0v11a7 7 0 11-8 0ZM17 12v11M25 8h4M25 13h3"/></>:type==='shield'?<><path d="M16 3 5 7v9c0 7 11 13 11 13s11-6 11-13V7L16 3Z"/><path d="m10 16 4 4 8-9"/></>:<><rect x="5" y="3" width="22" height="26" rx="4"/><circle cx="16" cy="19" r="7"/><path d="M9 8h5m7 0h2M11 19c3-4 7 4 10 0"/></>}</svg>
+const issues=[['water','Не сливает воду','Вода остаётся в барабане, программа не завершается.'],['power','Не включается','Машина не реагирует на кнопку или останавливается.'],['heat','Не нагревает воду','Стирка идёт в холодной воде, вещи плохо отстирываются.'],['sound','Шумит и вибрирует','Появились посторонние звуки или сильная вибрация.'],['water','Протекает','Вода под машиной или рядом с дверцей.'],['washer','Не отжимает','Бельё остаётся мокрым после завершения стирки.']]
+const faq=[['С чего начать?','Позвоните Александру и расскажите, что случилось с машиной. По возможности назовите марку, модель и код ошибки на дисплее. Консультация бесплатная.'],['Можно ли отремонтировать в день обращения?','На сайте доступен ремонт в день обращения. Возможность выезда в ваш населённый пункт и удобное время уточните у мастера по телефону.'],['Какая гарантия на работу?','На выполненные работы предоставляется гарантия 6 месяцев. Подробности по вашему ремонту можно уточнить у Александра.'],['Сколько будет стоить ремонт?','Стоимость зависит от неисправности и необходимых работ. Опишите проблему мастеру: он подскажет дальнейшие действия и ответит на вопросы о стоимости.'],['Есть ли скидки пенсионерам?','Да, предусмотрены скидки пенсионерам и система скидок на ремонтные работы. Условия уточните при обращении.']]
+const links=[['#problems','Неисправности'],['#about','О сервисе'],['#reviews','Отзывы'],['#contact','Контакты']]
+export default function IndexPage(){
+ const [open,setOpen]=useState(false)
+ const issueTrack=useRef(null)
+ const slideIssues=direction=>{const track=issueTrack.current;if(track)track.scrollBy({left:direction*track.clientWidth*.85,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}
+ return <>
+ <Helmet htmlAttributes={{lang:'ru'}}><title>Ремонт стиральных машин в Лисках и Воронежской области — Александр</title><meta name="description" content="Ремонт стиральных машин в Лисках, Острогожске, Нововоронеже, Воронеже и Боброве. Бесплатная консультация, гарантия 6 месяцев. Мастер Александр: +7 920 464-57-92."/><meta name="theme-color" content="#f5f7fa"/><link rel="canonical" href="https://gorgeous-figolla-768936.netlify.app/"/><meta property="og:title" content="Снова чистые вещи. Снова всё работает."/><meta property="og:description" content="Ремонт стиральных машин в Лисках и Воронежской области. Мастер Александр."/><meta property="og:type" content="website"/><meta property="og:image" content={'https://gorgeous-figolla-768936.netlify.app'+NewHero}/><script type="application/ld+json">{JSON.stringify({'@context':'https://schema.org','@type':'LocalBusiness',name:'Ремонт бытовой техники — Александр',url:'https://gorgeous-figolla-768936.netlify.app/',telephone:'+79204645792',email:'alexa.afa@yandex.ru',areaServed:['Лиски','Острогожск','Нововоронеж','Воронеж','Бобров','Воронежская область']})}</script></Helmet>
+ <a className="skip" href="#main">К содержанию</a>
+ <div className="utility-bar"><div className="container"><span>Лиски · Воронежская область</span><a href="mailto:alexa.afa@yandex.ru">alexa.afa@yandex.ru</a><a href={tel}>На связи: {phone}</a></div></div><div className="announcement">Техника подвела? <a href={tel}>Начните с бесплатной консультации <Arrow/></a></div>
+ <header className="site-header"><div className="container header-inner"><a className="brand" href="#" aria-label="Ремонт бытовой техники — главная"><img src={Logo} alt=""/><span>Ремонт<span>бытовой техники</span></span></a><nav className={open?'navigation is-open':'navigation'} id="navigation" aria-label="Основная навигация" onKeyDown={e=>{if(e.key==='Escape')setOpen(false)}}><div className="menu-caption">Чем можем помочь?</div>{links.map(([href,label],index)=><a key={href} href={href} onClick={()=>setOpen(false)}><small className="menu-index">0{index+1}</small>{label}<span className="menu-link-arrow" aria-hidden="true">↗</span></a>)}</nav><a className="header-phone" href={tel}>{phone}<span>Бесплатная консультация</span></a><button className="menu-toggle" aria-label={open?'Закрыть меню':'Открыть меню'} aria-expanded={open} aria-controls="navigation" onClick={()=>setOpen(!open)} onKeyDown={e=>{if(e.key==='Escape')setOpen(false)}}><b>{open?'Закрыть':'Меню'}</b></button></div></header>
+ <main id="main">
+ <section className="hero"><div className="container hero-panel"><div className="hero-copy"><p className="eyebrow">ЗАБОТА О ТЕХНИКЕ. ЗАБОТА О ВАС.</p><h1>Вернём вашей<br/>машине <span>привычный<br/>ритм жизни.</span></h1><p className="hero-description">Ремонт стиральных машин в Лисках<br/>и Воронежской области. Мастер Александр.</p><div className="hero-actions"><a className="button" href={tel}>Позвонить мастеру <Arrow/></a><a className="hero-secondary" href="#how">Как мы работаем</a></div><div className="hero-proof"><div><strong>Спасибо за доверие</strong><a href="#reviews">Отзывы наших клиентов</a></div></div></div><div className="hero-visual"><div className="hero-photo-frame"><img className="hero-photo" src={NewHero} alt="Стиральная машина в светлой домашней прачечной"/></div><div className="hero-sticker"><Icon type="shield"/><div><strong>6 месяцев</strong><span>гарантии на работу</span></div></div><a className="hero-consult" href={tel}>Консультация<br/><strong>бесплатно</strong><Arrow/></a></div></div></section>
+ <section className="about-section section" id="about"><div className="container"><div className="story-heading"><p className="eyebrow">ПОЗНАКОМИМСЯ БЛИЖЕ</p><h2>Техника должна помогать.<br/><span>А не менять ваши планы.</span><br/><em>Берём ремонт на себя.</em></h2></div><div className="story-grid"><div className="story-photo"><img src={Hero} alt="Стиральная машина — исходное фото сервиса" loading="lazy"/><span>Аккуратно.<br/>С заботой о вашем доме.</span></div><div className="story-copy"><div className="warranty-number"><strong>6</strong><span>МЕСЯЦЕВ<br/>ГАРАНТИИ НА РАБОТУ</span></div><p>Александр — мастер по ремонту бытовой техники. Поможет разобраться в поломке и вернуть стиральную машину к работе.</p><p>Работаем на результат, в оптимальные сроки и с уважением к вашему дому. Предусмотрены скидки пенсионерам.</p><a href={tel} className="button">Обсудить поломку <Arrow/></a></div><div className="story-signature"><span>ВАШ МАСТЕР</span><strong>Александр</strong><p>Объясню, что случилось.<br/>Помогу с ремонтом.</p><a href={tel}>На связи <Arrow/></a></div></div><div className="care-points"><span>Бесплатная консультация</span><span>Ремонт в день обращения</span><span>Скидки пенсионерам</span><span>Бережное отношение</span></div></div></section>
+ <section className="section problems-section" id="problems"><div className="container"><div className="section-heading"><div><p className="eyebrow">ПОМОЖЕМ РАЗОБРАТЬСЯ</p><h2>Что случилось<br/>с вашей машиной?</h2></div><p>Не обязательно знать причину поломки.<br/>Расскажите, как ведёт себя техника —<br/>мастер поможет сориентироваться.</p></div><div className="issue-grid" ref={issueTrack} tabIndex={0} role="region" aria-label="Неисправности — листайте в стороны">{issues.map(([icon,title,desc],index)=><a className="issue-card" href={tel} key={title} aria-label={title+' — позвонить мастеру'}><div className="issue-visual"><img src={issueImages[index]} alt="" loading="lazy"/><span><Icon type={icon}/></span></div><h3>{title}</h3><p>{desc}</p><span className="issue-link">Обсудить с мастером <Arrow/></span></a>)}</div><div className="issue-controls"><button aria-label="Предыдущие неисправности" onClick={()=>slideIssues(-1)}><Arrow/></button><span>Листайте, чтобы найти свою ситуацию</span><button aria-label="Следующие неисправности" onClick={()=>slideIssues(1)}><Arrow/></button></div></div></section>
+ <section className="section steps-section" id="how"><div className="container"><div className="section-heading"><div><p className="eyebrow">БЕЗ ЛИШНИХ СЛОЖНОСТЕЙ</p><h2>Начнём с разговора.</h2></div><a href={tel} className="button button-soft">{phone} <Arrow/></a></div><div className="steps"><article><div className="step-node"><strong>01</strong></div><span>СВЯЗЬ</span><h3>Расскажите о поломке</h3><p>Позвоните или напишите на почту. Назовите модель машины и опишите проблему.</p></article><article><div className="step-node"><strong>02</strong></div><span>ДОГОВОРЁННОСТЬ</span><h3>Уточните детали</h3><p>Обсудите с мастером ваш адрес, удобное время, стоимость и порядок работ.</p></article><article><div className="step-node"><strong>03</strong></div><span>РЕШЕНИЕ</span><h3>Вернитесь к своим делам</h3><p>Мастер займётся техникой. На выполненный ремонт — гарантия 6 месяцев.</p></article></div></div></section>
+ <Review/>
+ <section className="section geography"><div className="container geography-inner"><div><p className="eyebrow">ВЫЕЗЖАЕМ К ВАМ</p><h2>Лиски и<br/>Воронежская область.</h2><p>Работаем в городах и прилегающих сёлах.<br/>Возможность выезда по вашему адресу уточните у мастера.</p></div><div className="city-list">{['Лиски','Острогожск','Нововоронеж','Воронеж','Бобров','Соседние города и сёла'].map(c=><span key={c}><i/>{c}</span>)}</div></div></section>
+ <section className="section questions-section"><div className="container"><div className="questions-heading"><div><p className="eyebrow">ДО ПЕРВОГО ЗВОНКА</p><h2>Вопросы?<br/><span>Всё объясним.</span></h2></div><p>Нажмите на карточку, чтобы узнать ответ.<br/>А свою ситуацию можно обсудить лично.</p></div><div className="question-grid">{faq.map(([q,a],index)=><details className="question-card" key={q}><summary><span className="question-number">0{index+1}</span><h3>{q}</h3><span className="question-action"><span className="question-read">Читать ответ</span><span className="question-close">Свернуть</span><Arrow/></span></summary><div className="question-answer"><p>{a}</p></div></details>)}<a className="question-call" href={tel}><span>НЕ НАШЛИ СВОЙ ВОПРОС?</span><strong>Давайте<br/>поговорим.</strong><span>{phone} <Arrow/></span></a></div></div></section>
+ <section id="contact" className="contact-section"><div className="container contact-inner"><div className="contact-copy"><p className="eyebrow">НА СВЯЗИ — АЛЕКСАНДР</p><h2>Пусть техника<br/>работает.<br/><span>А вы — отдыхайте.</span></h2><p>Позвоните, расскажите о поломке.<br/>Первый шаг к решению — бесплатная консультация.</p><a className="contact-phone" href={tel}>{phone}</a><a className="contact-email" href="mailto:alexa.afa@yandex.ru">alexa.afa@yandex.ru <Arrow/></a><p className="messenger-note">Также можно связаться через WhatsApp, Viber или Telegram по номеру мастера.</p></div><div className="master-visual"><div className="master-orbit"/><img src={Master} alt="Иллюстрация мастера по ремонту бытовой техники" loading="lazy"/><span className="master-tag">Давайте починим <span>✓</span></span></div></div></section>
+ </main><footer><div className="container footer-main"><a className="brand" href="#"><img src={Logo} alt=""/><span>Ремонт<span>бытовой техники</span></span></a><nav aria-label="Навигация в подвале">{links.map(([href,label])=><a href={href} key={href}>{label}</a>)}</nav><div><a href={tel}>{phone}</a><p>Лиски и Воронежская область</p></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} Ремонт бытовой техники</span><a href="#main">Вернуться наверх ↑</a></div></footer>
+ </>
 }
-
-export default IndexPage
