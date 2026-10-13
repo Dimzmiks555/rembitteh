@@ -45,16 +45,16 @@ export const Review = () => {
 
 
   return (
-    <div className='section' id="reviews">
+    <div className='section reviews-section' id="reviews">
         <div className='container'>
-            <h2>Отзывы довольных клиентов</h2>
-            <div className='review_block'>
+            <div className="section-heading"><div><p className="eyebrow">СПАСИБО ЗА ДОВЕРИЕ</p><h2>Когда всё снова<br/>в порядке.</h2></div><p>Отзывы клиентов о работе мастера.</p></div>
+            <div className='review_block' tabIndex={0} role="region" aria-label="Отзывы клиентов — листайте в стороны">
                 {
                     cards.map(card => (
-                        <div className='review_card' id={"card_" + card?.id}>
+                        <div className='review_card' key={card.id}>
                             <div className='card_promo'>
                                 <div>
-                                    <img src={card?.image}></img>
+                                    <img src={card.image} alt="" loading="lazy"/>
                                 </div>
                                 <h4>
                                     {card?.title}
